@@ -40,6 +40,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A204DB2F2AEEA09700AB37D0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A2B9C79C2AA31D1300214A94 /* Currency.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A2B9C7802AA31C8000214A94 = {
 			isa = PBXGroup;
 			children = (
@@ -61,7 +69,7 @@
 			children = (
 				A2B9C78C2AA31C8000214A94 /* SwiftBlrTCADemoApp.swift */,
 				A2B9C78E2AA31C8000214A94 /* ContentView.swift */,
-				A2B9C79C2AA31D1300214A94 /* Currency.swift */,
+				A204DB2F2AEEA09700AB37D0 /* Model */,
 				A27020D72AA34D720083A598 /* CurrencyConverter.swift */,
 				A2B9C79A2AA31CDF00214A94 /* CurrencyRowView.swift */,
 				A2B9C7902AA31C8200214A94 /* Assets.xcassets */,
