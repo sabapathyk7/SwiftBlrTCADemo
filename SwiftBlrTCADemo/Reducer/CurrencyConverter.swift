@@ -10,6 +10,9 @@ import ComposableArchitecture
 
 struct CurrencyConverter: Reducer {
     typealias Currencies = [TableViewData]
+    private let baseURL = "https://v6.exchangerate-api.com/v6/"
+    private let accessKey = "c1a4fe51ecfcebb4ddda0835"
+
     struct State: Equatable {
         var initialCurrencies: Currencies = []
         var currencies: Currencies = []
@@ -27,17 +30,26 @@ struct CurrencyConverter: Reducer {
     
     var body: some ReducerOf<Self> {
         Reduce{ state, action in
+            let selectedBase = state.selectedBaseCurrency
             switch action {
             case .onAppear:
                 return .run { send in
-                    let (data, _) = try await URLSession.shared.data(from: URL(string: "https://pastebin.com/raw/Nq1KvHjZ")!)
+                    let (data, _) = try await URLSession.shared.data(from: URL(string: baseURL + accessKey + "/latest/\(selectedBase)")!)
                     let currencyData = try JSONDecoder().decode(CurrencyData.self, from: data)
                     await send(.processAPIResponse(currencyData))
                 }
             case let .processAPIResponse(data):
                 let cuurencies = getTableViewDataArray(currencyListView: data)
                 state.initialCurrencies = cuurencies
-                return .send(.updateCurrencies(cuurencies))
+//                return .send(.updateCurrencies(cuurencies))
+                guard let convertPrice = Double(state.priceQuantityEntered) else {
+                    return .none
+                }
+                if convertPrice > 1.0 {
+                    return .send(.updateCurrencies(reactToEnteredAmount(state: state, amount: Double(state.priceQuantityEntered) ?? 1.0)))
+                } else {
+                    return .send(.updateCurrencies(cuurencies))
+                }
             case let .updateCurrencies(currencies):
                 state.currencies = currencies
                 return .none
@@ -47,7 +59,11 @@ struct CurrencyConverter: Reducer {
                 return .send(.updateCurrencies(reactToEnteredAmount(state: state, amount: Double(string) ?? 1.0)))
             case let .countryCodePickerSelected(currencyCode):
                 state.selectedBaseCurrency = currencyCode
-                return .none
+                return .run { send in
+                    let (data, _) = try await URLSession.shared.data(from: URL(string: baseURL + accessKey + "/latest/\(currencyCode)")!)
+                    let currencyData = try JSONDecoder().decode(CurrencyData.self, from: data)
+                    await send(.processAPIResponse(currencyData))
+                }
             }
         }
     }
@@ -58,7 +74,7 @@ private extension CurrencyConverter {
     func getTableViewDataArray(currencyListView: CurrencyData) -> Currencies {
         let currencyDet = self.fetchAllCurrencyDetails()
         var arrayOfTableViewData: Currencies = Currencies()
-        for (key, value) in currencyListView.rates {
+        for (key, value) in currencyListView.conversion_rates {
             guard let currencySymbol = currencyDet.filter({ $0.code.contains(key)}).last else {
                 continue
             }

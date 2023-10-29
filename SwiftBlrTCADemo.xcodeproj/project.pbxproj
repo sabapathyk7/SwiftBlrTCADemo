@@ -48,6 +48,24 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		A204DB302AEEA48B00AB37D0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A2B9C78C2AA31C8000214A94 /* SwiftBlrTCADemoApp.swift */,
+				A2B9C78E2AA31C8000214A94 /* ContentView.swift */,
+				A2B9C79A2AA31CDF00214A94 /* CurrencyRowView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A204DB322AEEA4A700AB37D0 /* Reducer */ = {
+			isa = PBXGroup;
+			children = (
+				A27020D72AA34D720083A598 /* CurrencyConverter.swift */,
+			);
+			path = Reducer;
+			sourceTree = "<group>";
+		};
 		A2B9C7802AA31C8000214A94 = {
 			isa = PBXGroup;
 			children = (
@@ -67,11 +85,9 @@
 		A2B9C78B2AA31C8000214A94 /* SwiftBlrTCADemo */ = {
 			isa = PBXGroup;
 			children = (
-				A2B9C78C2AA31C8000214A94 /* SwiftBlrTCADemoApp.swift */,
-				A2B9C78E2AA31C8000214A94 /* ContentView.swift */,
+				A204DB302AEEA48B00AB37D0 /* Views */,
 				A204DB2F2AEEA09700AB37D0 /* Model */,
-				A27020D72AA34D720083A598 /* CurrencyConverter.swift */,
-				A2B9C79A2AA31CDF00214A94 /* CurrencyRowView.swift */,
+				A204DB322AEEA4A700AB37D0 /* Reducer */,
 				A2B9C7902AA31C8200214A94 /* Assets.xcassets */,
 				A2B9C7922AA31C8200214A94 /* Preview Content */,
 			);
@@ -117,7 +133,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					A2B9C7882AA31C8000214A94 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -177,6 +193,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -209,6 +226,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -237,6 +255,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -269,6 +288,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
