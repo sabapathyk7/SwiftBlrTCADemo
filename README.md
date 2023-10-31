@@ -1,6 +1,8 @@
 # SwiftBlrTCADemo
 Demo Application - Getting Started with TCA - 2nd September - Swift Bengaluru Community @ AiDash, Whitefield BLR
 
+Full Tutorial can be found here: https://medium.com/@sabapathy7/getting-started-with-the-composable-architecture-tca-7369f6ee4e4d
+
 ## About The Project
 
    This demo project utilizes The Composable Architecture (TCA) Framework to convert a list of currencies.
